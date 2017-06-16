@@ -6,8 +6,6 @@ import (
 	"os"
 
 	"fmt"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
@@ -42,7 +40,7 @@ func mapKeyPairs(path string) map[string]*json.RawMessage {
 	_, err = file.Read(dbytes)
 	err = json.Unmarshal(dbytes, &tokenMap)
 
-	spew.Dump(dbytes, tokenMap)
+	// spew.Dump(dbytes, tokenMap)
 
 	return tokenMap
 }
