@@ -9,8 +9,6 @@ import (
 	"fmt"
 
 	"bytes"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
@@ -48,19 +46,14 @@ func mapKeyPairs(path, buffer string) map[string][]byte {
 	for k, v := range tokenMap {
 		j, err := json.Marshal(&v)
 		checkError(err)
-		// fmt.Println(k, string(j))
-		// j = append(j, []byte(buffer)...)
-		// j = append([]byte(buffer), j...)
 		tokenMapS[buffer+k+buffer] = j
 	}
-	spew.Dump(tokenMapS)
 	return tokenMapS
 }
 
 func detokenize(input []byte, tokenMap map[string][]byte) []byte {
 	for k, v := range tokenMap {
 		input = bytes.Replace(input, []byte(k), v, -1)
-		spew.Dump(input)
 	}
 	return input
 }
