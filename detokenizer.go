@@ -3,9 +3,14 @@ package main
 import (
 	"encoding/json"
 	"log"
-	"os"
+
+	"io/ioutil"
 
 	"fmt"
+
+	"bytes"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 func main() {
@@ -13,7 +18,7 @@ func main() {
 	args := flagInit()
 
 	// convert JSON file into a map[string]string for later use
-	tokens := mapKeyPairs(*args.tokensPath)
+	tokens := mapKeyPairs(*args.tokensPath, *args.bufferChars)
 
 	// load tokenized document into memory
 	input := loadTokenizedDocument(*args.inputPath)
@@ -27,42 +32,55 @@ func main() {
 	}
 }
 
-func mapKeyPairs(path string) map[string]*json.RawMessage {
-	tokenMap := map[string]*json.RawMessage{}
-
-	file, err := os.Open(path)
-	defer file.Close()
+func checkError(err error) {
 	if err != nil {
 		log.Panic(err)
 	}
-
-	dbytes := []byte{}
-	_, err = file.Read(dbytes)
-	err = json.Unmarshal(dbytes, &tokenMap)
-
-	// spew.Dump(dbytes, tokenMap)
-
-	return tokenMap
 }
 
-func detokenize(input string, tokenMap map[string]*json.RawMessage) string {
-	result := ""
+func mapKeyPairs(path, buffer string) map[string][]byte {
+	tokenMap := map[string]*json.RawMessage{}
+	tokenMapS := map[string][]byte{}
+	databytes := loadFile(path)
+	err := json.Unmarshal(databytes, &tokenMap)
+	checkError(err)
 
 	for k, v := range tokenMap {
-		fmt.Println(k, v)
+		j, err := json.Marshal(&v)
+		checkError(err)
+		// fmt.Println(k, string(j))
+		// j = append(j, []byte(buffer)...)
+		// j = append([]byte(buffer), j...)
+		tokenMapS[buffer+k+buffer] = j
 	}
+	spew.Dump(tokenMapS)
+	return tokenMapS
+}
 
+func detokenize(input []byte, tokenMap map[string][]byte) []byte {
+	for k, v := range tokenMap {
+		input = bytes.Replace(input, []byte(k), v, -1)
+		spew.Dump(input)
+	}
+	return input
+}
+
+func loadFile(path string) []byte {
+	file, err := ioutil.ReadFile(path)
+	checkError(err)
+	return file
+}
+
+func loadTokenizedDocument(path string) []byte {
+	result := loadFile(path)
 	return result
 }
 
-func loadTokenizedDocument(path string) string {
-	return ""
+func outputDetokenizedDocumentToFile(path string, data []byte) {
+	err := ioutil.WriteFile(path, data, 0644)
+	checkError(err)
 }
 
-func outputDetokenizedDocumentToFile(path string, data string) {
-
-}
-
-func outputDetokenizedDocumentToStdout(data string) {
-
+func outputDetokenizedDocumentToStdout(data []byte) {
+	fmt.Print(string(data))
 }

@@ -10,7 +10,8 @@
         "host": "127.0.0.1",
         "program": "${fileDirname}",
         "env": {},
-        "args": ["--buffer=\"__\"", "--input=\"./bin/tokenizedDemo.xml\"", "--output=\"\"", "--tokens=\"./bin/tokensDemo.json\""],
+        "args": ["--buffer=\"__\"", "--input=\"/home/joe/Projects/fasturtle/bin/tokenizedDemo.xml\"", "--output=\"\"", "--tokens=\"/home/joe/Projects/fasturtle/bin/tokensDemo.json\""],
         "showLog": true
     }]
 }
+// ./fasturtle --buffer="__" --input="/home/joe/Projects/fasturtle/bin/tokenizedDemo.xml" --output="" --tokens="/home/joe/Projects/fasturtle/bin/tokensDemo.json"

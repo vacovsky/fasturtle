@@ -1,2 +1,3 @@
-<someXML name="something" value="__mykey__">
-<someXML name="theotherthing" value="__myotherkey__">
+<someXML name="something" value=__mykey__>
+<someXML name="theotherthing" value=__myotherkey__>
+<someXML name="thisshouldbeanint" value=__myintkey__>
