@@ -1,0 +1,2 @@
+<someXML name="something" value="$$mykey$$">
+<someXML name="theotherthing" value="$$myotherkey$$">
