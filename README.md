@@ -5,7 +5,7 @@ A detokenization tool for configuration files and Madlibs.
 ## Usage
 
 ```bash
-fasturtle --buffer="$$" --input="/path/to/tokenized/file" --output="/path/to/save/output" --tokens="/path/to/json/keyvals"
+fasturtle --buffer="__" --input="/path/to/tokenized/file" --output="/path/to/save/output" --tokens="/path/to/json/keyvals"
 ```
 
 ## Example
@@ -24,8 +24,8 @@ Token File:
 Tokenized Input:
 
 ```xml
-<someXML name="something" value="$$mykey$$">
-<someXML name="theotherthing" value="$$myotherkey$$">
+<someXML name="something" value="__mykey__">
+<someXML name="theotherthing" value="__myotherkey__">
 ```
 
 Detokenized Output:
