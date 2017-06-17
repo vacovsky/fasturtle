@@ -13,6 +13,9 @@ import (
 func mapKeyPairs(path, buffer string) map[string][]byte {
 	tokenMap := map[string]*json.RawMessage{}
 	tokenMapS := map[string][]byte{}
+	if path == "" {
+		return tokenMapS
+	}
 	databytes := loadFile(path)
 	err := json.Unmarshal(databytes, &tokenMap)
 	checkError(err)
