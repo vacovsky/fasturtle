@@ -13,7 +13,7 @@ fasturtle --buffer="__" --input="/path/to/tokenized/file" --output="/path/to/sav
 ### Extract tokens syntax
 
 ```bash
-./fasturtle --input="/path/to/tokenized/file" --buffer="__" --extract=true
+./fasturtle --input="/path/to/tokenized/file" --extract
 ```
 
 ## Examples
