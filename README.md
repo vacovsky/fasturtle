@@ -17,8 +17,12 @@ fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buff
 ### Extract tokens syntax
 
 ```bash
-fasturtle --extract --input="input.xml"
+fasturtle --extract --input="input.xml" --output="output.json"
+# if --output is optional, but if provided, and if the file extension ends in ".json", the keys will be formatted as JSON:
+# for example: {"myintkey":"","mykey":"","myotherkey":""}
+# This makes it easy to create a tokens file template, since you only need to plug in the values.
 ```
+
 
 ## Examples
 

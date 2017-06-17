@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"log"
+	"strings"
+)
 
 func main() {
 	// Parse the command line flag values into variables for later use
@@ -12,11 +15,18 @@ func main() {
 	var output []byte
 	if *args.extract {
 		tokens := extractTokens(input, *args.bufferChars)
-		for i, t := range tokens {
-			if i >= 1 {
-				output = append(output, []byte("\n")...)
+
+		if strings.HasSuffix(*args.outputPath, ".json") {
+			// if the output file ends in json, format it as a json file with { "key": "" }
+			output = convertToJSON(tokens, *args.bufferChars)
+		} else {
+			// just spit out the keys
+			for i, t := range tokens {
+				if i > 0 {
+					output = append(output, []byte("\n")...)
+				}
+				output = append(output, t...)
 			}
-			output = append(output, t...)
 		}
 	} else {
 		// parse tokens from json file
