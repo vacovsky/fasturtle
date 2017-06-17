@@ -2,18 +2,22 @@
 
 A detokenization tool for configuration files and Madlibs.
 
+## Installation
+
+```bash
+go get github.com/vacoj/fasturtle
+```
 ## Usage
 
 ### Detokenize syntax
 ```bash
-fasturtle --buffer="__" --input="/path/to/tokenized/file" --output="/path/to/save/output" --tokens="/path/to/json/keyvals"
+fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buffer="__" 
 ```
-
 
 ### Extract tokens syntax
 
 ```bash
-./fasturtle --input="/path/to/tokenized/file" --extract
+fasturtle --extract --input="input.xml"
 ```
 
 ## Examples
