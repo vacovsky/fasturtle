@@ -15,7 +15,17 @@ func Test_convertToJSON(t *testing.T) {
 		args args
 		want []byte
 	}{
-	// TODO: Add test cases.
+		// TODO: Add test cases.
+		{
+			name: "Ensure JSON converts",
+			args: args{
+				buffer: "HAHA",
+				data: [][]byte{
+					[]byte("test123"),
+				},
+			},
+			want: []byte(`{"test123":""}`),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
