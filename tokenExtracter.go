@@ -5,8 +5,6 @@ import (
 	"regexp"
 
 	"bytes"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 // __(.*?)__
@@ -26,6 +24,5 @@ func convertToJSON(data [][]byte, buffer string) []byte {
 	}
 	jdata, err := json.Marshal(dmap)
 	checkError(err)
-	spew.Dump(jdata)
 	return jdata
 }

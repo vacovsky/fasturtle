@@ -11,14 +11,14 @@ go get github.com/vacoj/fasturtle
 
 ### Detokenize syntax
 ```bash
-fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buffer="__" 
+fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buffer="__"
 ```
 
 ### Extract tokens syntax
 
 ```bash
 fasturtle --extract --input="input.xml" --output="output.json"
-# if --output is optional, but if provided, and if the file extension ends in ".json", the keys will be formatted as JSON:
+# if --output is optional, but if provided, and if the file extension ends in ".json", the keys will be formatted as JSON.
 # for example: {"myintkey":"","mykey":"","myotherkey":""}
 # This makes it easy to create a tokens file template, since you only need to plug in the values.
 ```
@@ -68,4 +68,10 @@ Outputs a list of used tokens:
 __mykey__
 __myotherkey__
 __myintkey__
+```
+
+or
+
+```javascript
+{"myintkey":"","mykey":"","myotherkey":""}
 ```
