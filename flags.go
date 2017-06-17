@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
 
 type flagsModel struct {
@@ -27,5 +28,13 @@ func flagInit() flagsModel {
 		fmt.Println("Error: Input (--input) cannot be empty.  Please provide a file path.  See --help for details.")
 		os.Exit(1)
 	}
+
+	if strings.ContainsAny(*model.bufferChars, "$") || strings.ContainsAny(*model.bufferChars, "*") {
+		fmt.Println(`Error: Buffer characters (--buffer) may not contain * nor $.  There are probably 
+		other illegal characters I didn't think of, but if you are getting weird errors, maybe try a 
+		difference buffer character set.`)
+		os.Exit(1)
+	}
+
 	return model
 }

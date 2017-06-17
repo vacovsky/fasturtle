@@ -48,10 +48,10 @@ func Test_extractTokens(t *testing.T) {
 		{
 			name: "Test extracting tokens",
 			args: args{
-				input:  []byte("bfuewiowrby8arwobyuv8fo***testkey******TESTKEY2***bt34870fb78wpbu8pf"),
-				buffer: "***",
+				input:  []byte("bfuewiowrby8arwobyuv8fo@@@testkey@@@@@@TESTKEY2@@@bt34870fb78wpbu8pf"),
+				buffer: "@@@",
 			},
-			want: [][]byte{[]byte("***testkey***\nTESTKEY2\n")},
+			want: [][]byte{[]byte("@@@testkey@@@"), []byte("@@@TESTKEY2@@@")},
 		},
 	}
 	for _, tt := range tests {

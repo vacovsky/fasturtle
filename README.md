@@ -9,7 +9,10 @@ go get github.com/vacoj/fasturtle
 ```
 ## Usage
 
+Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a bad idea, and I'm not accounting for it.
+
 ### Detokenize syntax
+
 ```bash
 fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buffer="__"
 ```
