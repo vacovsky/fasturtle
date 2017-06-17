@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"log"
 
 	"io/ioutil"
 
@@ -10,31 +9,6 @@ import (
 
 	"bytes"
 )
-
-func main() {
-	// Parse the command line flag values into variables for later use
-	args := flagInit()
-
-	// convert JSON file into a map[string]string for later use
-	tokens := mapKeyPairs(*args.tokensPath, *args.bufferChars)
-
-	// load tokenized document into memory
-	input := loadTokenizedDocument(*args.inputPath)
-
-	// store final product for later use
-	output := detokenize(input, tokens)
-	if *args.outputPath != "" {
-		outputDetokenizedDocumentToFile(*args.outputPath, output)
-	} else {
-		outputDetokenizedDocumentToStdout(output)
-	}
-}
-
-func checkError(err error) {
-	if err != nil {
-		log.Panic(err)
-	}
-}
 
 func mapKeyPairs(path, buffer string) map[string][]byte {
 	tokenMap := map[string]*json.RawMessage{}
@@ -64,16 +38,11 @@ func loadFile(path string) []byte {
 	return file
 }
 
-func loadTokenizedDocument(path string) []byte {
-	result := loadFile(path)
-	return result
-}
-
-func outputDetokenizedDocumentToFile(path string, data []byte) {
+func outputToFile(path string, data []byte) {
 	err := ioutil.WriteFile(path, data, 0644)
 	checkError(err)
 }
 
-func outputDetokenizedDocumentToStdout(data []byte) {
+func outputToStdout(data []byte) {
 	fmt.Print(string(data))
 }

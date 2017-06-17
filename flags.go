@@ -9,6 +9,7 @@ type flagsModel struct {
 	inputPath   *string
 	outputPath  *string
 	tokensPath  *string
+	extract     *bool
 }
 
 func flagInit() flagsModel {
@@ -17,6 +18,7 @@ func flagInit() flagsModel {
 	model.inputPath = flag.String("input", "", "Path the tokenized input file.")
 	model.outputPath = flag.String("output", "", "Destination path and file name for the detokenized file.  If not set, detokenized file is printed to stdout.")
 	model.tokensPath = flag.String("tokens", "", "Path to the JSON key-value pair set to be used for detokenization of the input file.")
+	model.extract = flag.Bool("extract", false, "If true, enters extract mode.  In extract mode, the output file or stdout becomes a list of the tokens found within the input file.")
 
 	flag.Parse()
 	return model
