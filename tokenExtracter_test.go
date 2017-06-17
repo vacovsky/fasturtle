@@ -15,13 +15,12 @@ func Test_convertToJSON(t *testing.T) {
 		args args
 		want []byte
 	}{
-		// TODO: Add test cases.
 		{
 			name: "Ensure JSON converts",
 			args: args{
 				buffer: "HAHA",
 				data: [][]byte{
-					[]byte("test123"),
+					[]byte("HAHAtest123HAHA"),
 				},
 			},
 			want: []byte(`{"test123":""}`),
@@ -46,7 +45,14 @@ func Test_extractTokens(t *testing.T) {
 		args args
 		want [][]byte
 	}{
-	// TODO: Add test cases.
+		{
+			name: "Test extracting tokens",
+			args: args{
+				input:  []byte("bfuewiowrby8arwobyuv8fo***testkey******TESTKEY2***bt34870fb78wpbu8pf"),
+				buffer: "***",
+			},
+			want: [][]byte{[]byte("***testkey***\nTESTKEY2\n")},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
