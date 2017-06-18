@@ -1,6 +1,9 @@
 package main
 
 import (
+	"bytes"
+	"log"
+	"os/exec"
 	"reflect"
 	"testing"
 )
@@ -61,4 +64,20 @@ func Test_extractTokens(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_dataBagsContents(t *testing.T) {
+	cmd := exec.Command("knife", "data", "bag", "show", "_default", "connection_strings", "-F", "json")
+	// cmd.Stdin = strings.NewReader("some input")
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// fmt.Printf("in all caps: %q\n", out.String())
+}
+
+func Test_dataBagsList(t *testing.T) {
+
 }

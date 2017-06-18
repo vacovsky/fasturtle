@@ -13,8 +13,16 @@ Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a ba
 
 ### Detokenize syntax
 
+#### Local token files in JSON format
+
 ```bash
-fasturtle --input="input.xml" --output="output.xml" --tokens="token.json" --buffer="__"
+fasturtle --input="input.xml" --output="output.xml" --tokens="token.json,token2.json" --buffer="__"
+```
+
+#### Using Chef Data Bags
+
+```bash
+fasturtle --input="input.xml" --output="output.xml" --databags="_default" --buffer="__"
 ```
 
 ### Extract tokens syntax
@@ -25,7 +33,6 @@ fasturtle --extract --input="input.xml" --output="output.json"
 # for example: {"myintkey":"","mykey":"","myotherkey":""}
 # This makes it easy to create a tokens file template, since you only need to plug in the values.
 ```
-
 
 ## Examples
 

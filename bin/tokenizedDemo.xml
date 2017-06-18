@@ -1,3 +1,4 @@
 <someXML name="something" value=__mykey__>
+<someXML name="secondfilekey" value=__secondfilekey__>
 <someXML name="theotherthing" value=__myotherkey__>
 <someXML name="thisshouldbeanint" value=__myintkey__>

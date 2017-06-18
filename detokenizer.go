@@ -8,29 +8,38 @@ import (
 	"fmt"
 
 	"bytes"
+	"strings"
 )
 
-func mapKeyPairs(path, buffer string) map[string][]byte {
-	tokenMap := map[string]*json.RawMessage{}
-	tokenMapS := map[string][]byte{}
+func mapKeyPairs(input []string, buffer string) []map[string][]byte {
+	tokenMapS := []map[string][]byte{}
 	if path == "" {
 		return tokenMapS
 	}
-	databytes := loadFile(path)
-	err := json.Unmarshal(databytes, &tokenMap)
-	checkError(err)
+	paths := strings.Split(path, ",")
 
-	for k, v := range tokenMap {
-		j, err := json.Marshal(&v)
+	for _, pv := range paths {
+		tokenMap := map[string]*json.RawMessage{}
+
+		err := json.Unmarshal(input, &tokenMap)
 		checkError(err)
-		tokenMapS[buffer+k+buffer] = j
+		tempMap := map[string][]byte{}
+
+		for k, v := range tokenMap {
+			j, err := json.Marshal(&v)
+			checkError(err)
+			tempMap[buffer+k+buffer] = j
+		}
+		tokenMapS = append(tokenMapS, tempMap)
 	}
 	return tokenMapS
 }
 
-func detokenize(input []byte, tokenMap map[string][]byte) []byte {
-	for k, v := range tokenMap {
-		input = bytes.Replace(input, []byte(k), v, -1)
+func detokenize(input []byte, tokenMap []map[string][]byte) []byte {
+	for _, v := range tokenMap {
+		for mk, mv := range v {
+			input = bytes.Replace(input, []byte(mk), mv, -1)
+		}
 	}
 	return input
 }

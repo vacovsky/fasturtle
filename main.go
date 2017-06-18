@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 	"strings"
 )
 
@@ -29,11 +31,31 @@ func main() {
 			}
 		}
 	} else {
-		// parse tokens from json file
-		tokens := mapKeyPairs(*args.tokensPath, *args.bufferChars)
+		if *args.dataBag != "" {
+			// parse tokens from data bags
+			blobs := listDataBagEntries(*args.dataBag)
+			if len(blobs) == 0 {
+				fmt.Println("Data bag shows no entries.  Ensure you are able to view a list of data bags with the command: knife show data bags {your_databag_here}")
+				os.Exit(1)
+			}
 
-		// store final product for later use
-		output = detokenize(input, tokens)
+			tokens := []map[string][]byte{}
+			blobsBytes := [][]byte{}
+			for _, b := range blobs {
+				blobsBytes = append(blobsBytes, collectDataBagJSON(b))
+			}
+			output = detokenize(input, tokens)
+
+		} else {
+
+			// paths := strings.Split(*args.tokensPath, ",")
+
+			// parse tokens from json file
+			tokens := mapKeyPairs(*args.tokensPath, *args.bufferChars)
+
+			// store final product for later use
+			output = detokenize(input, tokens)
+		}
 	}
 
 	if *args.outputPath != "" {

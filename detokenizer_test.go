@@ -29,7 +29,7 @@ func Test_mapKeyPairs(t *testing.T) {
 func Test_detokenize(t *testing.T) {
 	type args struct {
 		input    []byte
-		tokenMap map[string][]byte
+		tokenMap []map[string][]byte
 	}
 	tests := []struct {
 		name string
