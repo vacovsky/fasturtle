@@ -29,7 +29,7 @@ func flagInit() flagsModel {
 
 	flag.Parse()
 	if *model.inputPath == "" {
-		fmt.Println("Error: At least Input (--input) or Data Bag (--databag) must be provided.  Please provide at least one of them.  See --help for details.")
+		fmt.Println("Error: At least Input (--input) must be provided.  See --help for details.")
 		os.Exit(1)
 	}
 
