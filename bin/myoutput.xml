@@ -1,4 +1,5 @@
-<someXML name="something" value="some important value">
-<someXML name="secondfilekey" value="second file, so crazy!">
-<someXML name="theotherthing" value="this other thing">
-<someXML name="thisshouldbeanint" value=444>
+<someXML name="something" value=__mykey__>
+<someXML name="secondfilekey" value=__secondfilekey__>
+<someXML name="theotherthing" value=__myotherkey__>
+<someXML name="thisshouldbeanint" value=__myintkey__>
+<someXML name="pirri" value=__pirri__>

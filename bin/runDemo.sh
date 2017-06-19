@@ -1,3 +1,4 @@
 #!/bin/sh
 
-./fasturtle_x64 --buffer="__" --input="./tokenizedDemo.xml" --output="myoutput.xml" --tokens="./tokensDemo.json"
+# ./fasturtle_x64 --buffer="__" --input="./tokenizedDemo.xml" --output="myoutput.xml" --tokens="./tokensDemo.json,tokensDemo2.json"
+./fasturtle_x64 --buffer="__" --input="./tokenizedDemo.xml" --output="myoutput.xml" --databag="_default"

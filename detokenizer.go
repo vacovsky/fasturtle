@@ -8,20 +8,14 @@ import (
 	"fmt"
 
 	"bytes"
-	"strings"
 )
 
-func mapKeyPairs(input []string, buffer string) []map[string][]byte {
+func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
 	tokenMapS := []map[string][]byte{}
-	if path == "" {
-		return tokenMapS
-	}
-	paths := strings.Split(path, ",")
-
-	for _, pv := range paths {
+	for _, pv := range input {
 		tokenMap := map[string]*json.RawMessage{}
 
-		err := json.Unmarshal(input, &tokenMap)
+		err := json.Unmarshal(pv, &tokenMap)
 		checkError(err)
 		tempMap := map[string][]byte{}
 
