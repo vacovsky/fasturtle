@@ -16,7 +16,11 @@ func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
 		tokenMap := map[string]*json.RawMessage{}
 
 		err := json.Unmarshal(pv, &tokenMap)
-		checkError(err)
+		if err != nil {
+			// spew.Dump(pv, tokenMap)
+			// checkError(err)
+		}
+
 		tempMap := map[string][]byte{}
 
 		for k, v := range tokenMap {
