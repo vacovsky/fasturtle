@@ -10,7 +10,7 @@
         "host": "127.0.0.1",
         "program": "${fileDirname}",
         "env": {
-            "GOPATH": "/home/joe/.go/installed_packages"
+            "gopath": "/home/joe/.go/installed_packages"
         },
         "args": ["--buffer=\"__\"", "--input=\"/home/joe/Projects/fasturtle/bin/tokenizedDemo.xml\"", "--output=\"\"", "--tokens=\"/home/joe/Projects/fasturtle/bin/tokensDemo.json\""],
         "showLog": true

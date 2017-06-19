@@ -10,6 +10,7 @@ import (
 // lets you substitute data bags for token files!  So cool!
 // knife data bag show {data_bag} {bag_entry.json} -F json
 
+// TODO: build support for encryptoed data bags
 func listDataBagEntries(bag string) []string {
 	cmd := exec.Command("knife", "data", "bag", "show", bag)
 	var out bytes.Buffer
