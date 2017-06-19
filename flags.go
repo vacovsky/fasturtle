@@ -18,7 +18,7 @@ type flagsModel struct {
 
 func flagInit() flagsModel {
 	model := flagsModel{}
-	model.bufferChars = flag.String("buffer", "__", "Characters used to buffer the keys within the input file.  Example: __mykey__.")
+	model.bufferChars = flag.String("buffer", "", "Characters used to buffer the keys within the input file.  The default value is an empty string.  Example: __mykey__.")
 	model.inputPath = flag.String("input", "", "Path the tokenized input file.")
 	model.outputPath = flag.String("output", "", "Destination path and file name for the detokenized file.  If not set, detokenized file is printed to stdout.")
 	model.tokensPath = flag.String("tokens", "", "Path to the JSON key-value pair set(s) to be used for detokenization of the input file.  For multiple files, separate file paths with a comma (,).")

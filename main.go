@@ -12,6 +12,8 @@ func main() {
 	args := flagInit()
 
 	// load tokenized document into memory
+	// but first, check that the file exists
+	ensureFileExists(*args.inputPath, "--input")
 	input := loadFile(*args.inputPath)
 
 	var output []byte
@@ -52,6 +54,7 @@ func main() {
 			paths := strings.Split(*args.tokensPath, ",")
 			tokenInputs := [][]byte{}
 			for _, path := range paths {
+				ensureFileExists(path, "--tokens")
 				tokenInputs = append(tokenInputs, loadFile(path))
 			}
 			// parse tokens from json file(s)
@@ -66,6 +69,13 @@ func main() {
 		outputToFile(*args.outputPath, output)
 	} else {
 		outputToStdout(output)
+	}
+}
+
+func ensureFileExists(file, use string) {
+	if _, err := os.Stat("/path/to/whatever"); os.IsNotExist(err) {
+		fmt.Printf("Error: File \"%s\" does not exist. Please provide a valid file path for %s.", file, use)
+		os.Exit(1)
 	}
 }
 
