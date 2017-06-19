@@ -44,7 +44,11 @@ func main() {
 			}
 			var blobsBytes [][]byte
 			for _, b := range blobs {
-				blobsBytes = append(blobsBytes, collectDataBagJSON(*args.dataBag, b))
+				if *args.dataBagSecret == "" {
+					blobsBytes = append(blobsBytes, collectDataBagJSON(*args.dataBag, b))
+				} else {
+					blobsBytes = append(blobsBytes, collectEncrytpedDataBagJSON(*args.dataBag, b, *args.dataBagSecret))
+				}
 			}
 			var tokens []map[string][]byte
 			tokens = mapKeyPairs(blobsBytes, *args.bufferChars)

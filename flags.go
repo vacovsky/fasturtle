@@ -5,15 +5,18 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 type flagsModel struct {
-	bufferChars *string
-	inputPath   *string
-	outputPath  *string
-	tokensPath  *string
-	extract     *bool
-	dataBag     *string
+	bufferChars   *string
+	inputPath     *string
+	outputPath    *string
+	tokensPath    *string
+	extract       *bool
+	dataBag       *string
+	dataBagSecret *string
 }
 
 func flagInit() flagsModel {
@@ -24,6 +27,8 @@ func flagInit() flagsModel {
 	model.tokensPath = flag.String("tokens", "", "Path to the JSON key-value pair set(s) to be used for detokenization of the input file.  For multiple files, separate file paths with a comma (,).")
 	model.extract = flag.Bool("extract", false, "If true, enters extract mode.  In extract mode, the output file or stdout becomes a list of the tokens found within the input file.")
 	model.dataBag = flag.String("databag", "", "Name of the Chef data bag containing the tokenized values.  Under the hood, this relies on your environment having a properly configured knife.rb and necessary certs in place to connect to the Chef server.  Alternately, use --tokens to specify a json file.")
+	model.dataBagSecret = flag.String("databag-secret", "", "Path to the data bag secret.  Only necessary if you use encrypted data bags.")
+
 	flag.Parse()
 	if *model.inputPath == "" {
 		fmt.Println("Error: At least Input (--input) or Data Bag (--databag) must be provided.  Please provide at least one of them.  See --help for details.")
@@ -40,6 +45,6 @@ func flagInit() flagsModel {
 		difference buffer character set.`)
 		os.Exit(1)
 	}
-
+	spew.Dump(model)
 	return model
 }

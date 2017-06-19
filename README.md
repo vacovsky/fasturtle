@@ -1,6 +1,6 @@
 # Fasturtle
 
-A detokenization tool for configuration files and Madlibs.
+A detokenization tool for configuration files and Madlibs, with support for Chef data bags.
 
 ## Installation
 
@@ -20,10 +20,16 @@ Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a ba
 fasturtle --input="input.xml" --output="output.xml" --tokens="token.json,token2.json" --buffer="__"
 ```
 
-#### Using Chef Data Bags
+#### Using *Unencrypted* Chef Data Bags
 
 ```bash
 fasturtle --input="input.xml" --output="output.xml" --databag="_default" --buffer="__"
+```
+
+#### Using *Encrypted* Chef Data Bags
+
+```bash
+fasturtle --input="input.xml" --output="output.xml" --databag="_default" --data-secret="my_secret_file" --buffer="__"
 ```
 
 ### Extract tokens syntax
