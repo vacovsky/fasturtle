@@ -1,5 +1,6 @@
 {
     "mykey": "some important value",
     "myotherkey": "this other thing",
-    "myintkey": 444
+    "myintkey": 444,
+    "pirri": "pirri url"
 }

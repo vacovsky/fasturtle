@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -61,4 +62,15 @@ func Test_extractTokens(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_dataBagsContents(t *testing.T) {
+
+}
+
+func Test_dataBagsList(t *testing.T) {
+	data := collectDataBagJSON("_default", "connection_strings")
+	// spew.Dump(data)
+	test := mapKeyPairs([][]byte{data}, "__")
+	fmt.Println(test)
 }

@@ -7,19 +7,19 @@ import (
 
 func Test_mapKeyPairs(t *testing.T) {
 	type args struct {
-		path   string
+		input  [][]byte
 		buffer string
 	}
 	tests := []struct {
 		name string
 		args args
-		want map[string][]byte
+		want []map[string][]byte
 	}{
 	// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := mapKeyPairs(tt.args.path, tt.args.buffer); !reflect.DeepEqual(got, tt.want) {
+			if got := mapKeyPairs(tt.args.input, tt.args.buffer); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("mapKeyPairs() = %v, want %v", got, tt.want)
 			}
 		})
@@ -29,7 +29,7 @@ func Test_mapKeyPairs(t *testing.T) {
 func Test_detokenize(t *testing.T) {
 	type args struct {
 		input    []byte
-		tokenMap map[string][]byte
+		tokenMap []map[string][]byte
 	}
 	tests := []struct {
 		name string

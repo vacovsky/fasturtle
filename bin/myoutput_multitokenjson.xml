@@ -1,0 +1,5 @@
+<someXML name="something" value="some important value">
+<someXML name="secondfilekey" value="second file, so crazy!">
+<someXML name="theotherthing" value="this other thing">
+<someXML name="thisshouldbeanint" value=444>
+<someXML name="pirri" value="pirri url">

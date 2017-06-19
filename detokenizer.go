@@ -10,27 +10,34 @@ import (
 	"bytes"
 )
 
-func mapKeyPairs(path, buffer string) map[string][]byte {
-	tokenMap := map[string]*json.RawMessage{}
-	tokenMapS := map[string][]byte{}
-	if path == "" {
-		return tokenMapS
-	}
-	databytes := loadFile(path)
-	err := json.Unmarshal(databytes, &tokenMap)
-	checkError(err)
+func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
+	tokenMapS := []map[string][]byte{}
+	for _, pv := range input {
+		tokenMap := map[string]*json.RawMessage{}
 
-	for k, v := range tokenMap {
-		j, err := json.Marshal(&v)
-		checkError(err)
-		tokenMapS[buffer+k+buffer] = j
+		err := json.Unmarshal(pv, &tokenMap)
+		if err != nil {
+			// spew.Dump(pv, tokenMap)
+			// checkError(err)
+		}
+
+		tempMap := map[string][]byte{}
+
+		for k, v := range tokenMap {
+			j, err := json.Marshal(&v)
+			checkError(err)
+			tempMap[buffer+k+buffer] = j
+		}
+		tokenMapS = append(tokenMapS, tempMap)
 	}
 	return tokenMapS
 }
 
-func detokenize(input []byte, tokenMap map[string][]byte) []byte {
-	for k, v := range tokenMap {
-		input = bytes.Replace(input, []byte(k), v, -1)
+func detokenize(input []byte, tokenMap []map[string][]byte) []byte {
+	for _, v := range tokenMap {
+		for mk, mv := range v {
+			input = bytes.Replace(input, []byte(mk), mv, -1)
+		}
 	}
 	return input
 }
