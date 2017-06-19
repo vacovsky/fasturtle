@@ -22,7 +22,7 @@ fasturtle --input="input.xml" --output="output.xml" --tokens="token.json,token2.
 #### Using Chef Data Bags
 
 ```bash
-fasturtle --input="input.xml" --output="output.xml" --databags="_default" --buffer="__"
+fasturtle --input="input.xml" --output="output.xml" --databag="_default" --buffer="__"
 ```
 
 ### Extract tokens syntax
