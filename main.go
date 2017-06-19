@@ -73,8 +73,8 @@ func main() {
 }
 
 func ensureFileExists(file, use string) {
-	if _, err := os.Stat("/path/to/whatever"); os.IsNotExist(err) {
-		fmt.Printf("Error: File \"%s\" does not exist. Please provide a valid file path for %s.", file, use)
+	if _, err := os.Stat(file); os.IsNotExist(err) {
+		fmt.Printf("Error: File \"%s\" does not exist. Please provide a valid file path for %s.\n", file, use)
 		os.Exit(1)
 	}
 }

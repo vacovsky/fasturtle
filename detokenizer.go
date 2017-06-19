@@ -17,6 +17,7 @@ func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
 
 		err := json.Unmarshal(pv, &tokenMap)
 		if err != nil {
+			// TODO: find a better solution for this block.
 			// spew.Dump(pv, tokenMap)
 			// checkError(err)
 		}
