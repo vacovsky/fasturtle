@@ -16,4 +16,3 @@
         "showLog": true
     }]
 }
-// ./fasturtle --buffer="__" --input="/home/joe/Projects/fasturtle/bin/tokenizedDemo.xml" --output="" --tokens="/home/joe/Projects/fasturtle/bin/tokensDemo.json"

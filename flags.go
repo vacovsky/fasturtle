@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 type flagsModel struct {
@@ -45,6 +43,5 @@ func flagInit() flagsModel {
 		difference buffer character set.`)
 		os.Exit(1)
 	}
-	spew.Dump(model)
 	return model
 }
