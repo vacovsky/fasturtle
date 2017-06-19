@@ -5,8 +5,9 @@ A detokenization tool for configuration files and Madlibs.
 ## Installation
 
 ```bash
-go get github.com/vacoj/fasturtle
+go get -u github.com/vacoj/fasturtle
 ```
+
 ## Usage
 
 Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a bad idea, and I'm not accounting for it.
@@ -37,6 +38,7 @@ fasturtle --extract --input="input.xml" --output="output.json"
 ## Examples
 
 ### Detokenize
+
 Token File:
 
 ```json
@@ -84,6 +86,7 @@ Tokenized Input:
 ```
 
 Outputs a list of used tokens:
+
 ```bash
 __mykey__
 __myotherkey__
