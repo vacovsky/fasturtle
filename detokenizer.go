@@ -35,10 +35,14 @@ func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
 }
 
 func detokenize(input []byte, tokenMap []map[string][]byte) []byte {
+	overrideCompiled := map[string][]byte{}
 	for _, v := range tokenMap {
 		for mk, mv := range v {
-			input = bytes.Replace(input, []byte(mk), mv, -1)
+			overrideCompiled[mk] = mv
 		}
+	}
+	for k, v := range overrideCompiled {
+		input = bytes.Replace(input, []byte(k), v, -1)
 	}
 	return input
 }
