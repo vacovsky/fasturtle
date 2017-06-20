@@ -11,6 +11,16 @@ func main() {
 	// Parse the command line flag values into variables for later use
 	args := flagInit()
 
+	// set up buffer characters
+	var buffer []string
+	if *args.bufferChars != "" {
+		buffer = []string{*args.bufferChars, *args.bufferChars}
+	} else if *args.bufferCharsLeft != "" || *args.bufferCharsRight != "" {
+		buffer = []string{*args.bufferCharsLeft, *args.bufferCharsRight}
+	} else {
+		buffer = []string{"", ""}
+	}
+
 	// load tokenized document into memory
 	// but first, check that the file exists
 	ensureFileExists(*args.inputPath, "--input")
@@ -19,11 +29,11 @@ func main() {
 	var output []byte
 	if *args.extract {
 		// tokens are being extracted in this block
-		tokens := extractTokens(input, *args.bufferChars)
+		tokens := extractTokens(input, buffer)
 
 		if strings.HasSuffix(*args.outputPath, ".json") {
 			// if the output file ends in json, format it as a json file with { "key": "" }
-			output = convertToJSON(tokens, *args.bufferChars)
+			output = convertToJSON(tokens, buffer)
 		} else {
 			// just spit out the keys
 			for i, t := range tokens {
@@ -51,7 +61,7 @@ func main() {
 				}
 			}
 			var tokens []map[string][]byte
-			tokens = mapKeyPairs(blobsBytes, *args.bufferChars)
+			tokens = mapKeyPairs(blobsBytes, buffer)
 			output = detokenize(input, tokens)
 
 		} else {
@@ -62,7 +72,7 @@ func main() {
 				tokenInputs = append(tokenInputs, loadFile(path))
 			}
 			// parse tokens from json file(s)
-			tokens := mapKeyPairs(tokenInputs, *args.bufferChars)
+			tokens := mapKeyPairs(tokenInputs, buffer)
 
 			// store final product for later use
 			output = detokenize(input, tokens)

@@ -9,7 +9,7 @@ import (
 func Test_convertToJSON(t *testing.T) {
 	type args struct {
 		data   [][]byte
-		buffer string
+		buffer []string
 	}
 	tests := []struct {
 		name string
@@ -19,7 +19,7 @@ func Test_convertToJSON(t *testing.T) {
 		{
 			name: "Ensure JSON converts",
 			args: args{
-				buffer: "HAHA",
+				buffer: []string{"HAHA", "HAHA"},
 				data: [][]byte{
 					[]byte("HAHAtest123HAHA"),
 				},
@@ -39,7 +39,7 @@ func Test_convertToJSON(t *testing.T) {
 func Test_extractTokens(t *testing.T) {
 	type args struct {
 		input  []byte
-		buffer string
+		buffer []string
 	}
 	tests := []struct {
 		name string
@@ -49,10 +49,10 @@ func Test_extractTokens(t *testing.T) {
 		{
 			name: "Test extracting tokens",
 			args: args{
-				input:  []byte("bfuewiowrby8arwobyuv8fo@@@testkey@@@@@@TESTKEY2@@@bt34870fb78wpbu8pf"),
-				buffer: "@@@",
+				input:  []byte("bfuewiowrby8arwobyuv8fo@@@testkey!!!@@@TESTKEY2!!!bt34870fb78wpbu8pf"),
+				buffer: []string{"@@@", "!!!"},
 			},
-			want: [][]byte{[]byte("@@@testkey@@@"), []byte("@@@TESTKEY2@@@")},
+			want: [][]byte{[]byte("@@@testkey!!!"), []byte("@@@TESTKEY2!!!")},
 		},
 	}
 	for _, tt := range tests {
@@ -71,6 +71,6 @@ func Test_dataBagsContents(t *testing.T) {
 func Test_dataBagsList(t *testing.T) {
 	data := collectDataBagJSON("_default", "connection_strings")
 	// spew.Dump(data)
-	test := mapKeyPairs([][]byte{data}, "__")
+	test := mapKeyPairs([][]byte{data}, []string{"__", "__"})
 	fmt.Println(test)
 }

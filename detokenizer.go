@@ -10,7 +10,7 @@ import (
 	"bytes"
 )
 
-func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
+func mapKeyPairs(input [][]byte, buffer []string) []map[string][]byte {
 	tokenMapS := []map[string][]byte{}
 	for _, pv := range input {
 		tokenMap := map[string]*json.RawMessage{}
@@ -27,7 +27,7 @@ func mapKeyPairs(input [][]byte, buffer string) []map[string][]byte {
 		for k, v := range tokenMap {
 			j, err := json.Marshal(&v)
 			checkError(err)
-			tempMap[buffer+k+buffer] = j
+			tempMap[buffer[0]+k+buffer[1]] = j
 		}
 		tokenMapS = append(tokenMapS, tempMap)
 	}
