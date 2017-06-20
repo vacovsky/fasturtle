@@ -8,7 +8,7 @@ import (
 func Test_mapKeyPairs(t *testing.T) {
 	type args struct {
 		input  [][]byte
-		buffer string
+		buffer []string
 	}
 	tests := []struct {
 		name string

@@ -1,0 +1,5 @@
+<someXML name="something" value={{mykey}}>
+<someXML name="secondfilekey" value={{secondfilekey}}>
+<someXML name="theotherthing" value={{myotherkey}}>
+<someXML name="thisshouldbeanint" value={{myintkey}}>
+<someXML name="pirri" value={{pirri}}>
