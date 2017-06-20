@@ -16,6 +16,8 @@ Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a ba
 
 #### Local token files in JSON format
 
+Note:  this method supports a form of value overrides.  Values duplicated in JSON files later in the list will override values declared in earlier in the list.
+
 ```bash
 fasturtle --input="input.xml" --output="output.xml" --tokens="token.json,token2.json" --buffer="__"
 ```
@@ -53,7 +55,7 @@ file 1
     "mykey": "some important value",
     "myotherkey": "this other thing",
     "myintkey": 444,
-    "pirri": "pirri url"
+    "pirri": "http://pirri.vacovsky.us"
 }
 file 2
 {
@@ -77,8 +79,8 @@ Detokenized Output:
 <someXML name="something" value="some important value">
 <someXML name="secondfilekey" value="second file, so crazy!">
 <someXML name="theotherthing" value="this other thing">
-<someXML name="thisshouldbeanint" value=444>
-<someXML name="pirri" value="pirri url">
+<someXML name="thisshouldbeanint" value=15>  <!-- this value is 15 because tokensDemo2.json overrode the value of __myintkey__ -->
+<someXML name="pirri" value="http://pirri.vacovsky.us">
 ```
 
 ### Extract tokens
@@ -102,5 +104,5 @@ __myintkey__
 or
 
 ```javascript
-{"myintkey":"","mykey":"","myotherkey":""}
+{"myintkey":"","mykey":"","myotherkey":""}  // notice we remove the buffer chars
 ```
