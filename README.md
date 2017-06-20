@@ -59,7 +59,8 @@ file 1
 }
 file 2
 {
-    "secondfilekey": "second file, so crazy!"
+    "secondfilekey": "second file, so crazy!",
+    "myintkey": 15,
 }
 ```
 
@@ -79,7 +80,7 @@ Detokenized Output:
 <someXML name="something" value="some important value">
 <someXML name="secondfilekey" value="second file, so crazy!">
 <someXML name="theotherthing" value="this other thing">
-<someXML name="thisshouldbeanint" value=15>  <!-- this value is 15 because tokensDemo2.json overrode the value of __myintkey__ -->
+<someXML name="thisshouldbeanint" value=15>  <!-- this value is 15 because token2.json overrode the value of __myintkey__ -->
 <someXML name="pirri" value="http://pirri.vacovsky.us">
 ```
 
