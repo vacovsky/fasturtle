@@ -1,5 +1,0 @@
-<someXML name="something" value={"encrypted_data":"bLzL73mfHoDY2oxzUP59SMSIXu7v9AxGsb0ZtydAdLqsLRU/qCzw4pJmsZ+X\nkym+\n","iv":"fkmc+oVG4PMeJB2R6NuYRA==\n","version":1,"cipher":"aes-256-cbc"}>
-<someXML name="secondfilekey" value={"encrypted_data":"Ie3hSrslZRjR01wGA4WrjqGWjwKXVkOJRa/5WDSZbZXXxyzxNnU1aPK0CJJC\nIDV8\n","iv":"UAAxpEPZHLKFNAIblvlcRg==\n","version":1,"cipher":"aes-256-cbc"}>
-<someXML name="theotherthing" value={"encrypted_data":"0v/KIG1JZmg8wgBscodowunZpUDr11UGrz138Od+HbCrT+VQ3tDSXLqdEe27\nIMwJ\n","iv":"+Twy0IH0YwaE2YipqXlQSQ==\n","version":1,"cipher":"aes-256-cbc"}>
-<someXML name="thisshouldbeanint" value={"encrypted_data":"yFDUI+hSrx8v7UqFNgDI1ma/dwB9UTbBjx2eQDNAOmo=\n","iv":"VNHNh67LDm/ldyYM/zI5eA==\n","version":1,"cipher":"aes-256-cbc"}>
-<someXML name="pirri" value={"encrypted_data":"cC3oo4Jc08hvgMQQEbieMusiadsGOsdUqlNHOtx2X/w=\n","iv":"3aPa4FDLvU9XpU3/dXtF8w==\n","version":1,"cipher":"aes-256-cbc"}>
