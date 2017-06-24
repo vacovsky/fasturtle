@@ -1,11 +1,14 @@
-# Fasturtle
+# Fasturtle - a detokenization tool
 
 A detokenization tool for configuration files and Madlibs, with support for Chef data bags.
+
+This tool's input files can be easily generated from existing web.config files by using <a href="https://github.com/vacoj/shinroller">ShinRoller</a>. (https://github.com/vacoj/shinroller)
 
 ## Installation
 
 ```bash
 go get -u github.com/vacoj/fasturtle
+go get -u github.com/vacoj/shinroller   # recommended
 ```
 
 ## Usage
