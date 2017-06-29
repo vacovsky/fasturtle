@@ -44,6 +44,9 @@ Usage of fasturtle:
 
   -tokens string
         Path to the JSON key-value pair set(s) to be used for detokenization of the input file.  For multiple files, separate file paths with a comma (,).  If the same key exists in one or more of the files, then the file furthest to the right takes precendece (overrides) the previous.
+  -unsafe
+        If true, will not throw error if all tokens are not replaced.  Default is false, and if a token still exists after detokenization, an error will be thro
+wn.
 ```
 
 Pro-tip: Don't use ```$``` or ```*``` in your buffer characters.  It's just a bad idea, and I'm not accounting for it.
