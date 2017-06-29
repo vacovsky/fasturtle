@@ -13,6 +13,7 @@ type flagsModel struct {
 	outputPath       *string
 	tokensPath       *string
 	extract          *bool
+	unsafe           *bool
 	dataBag          *string
 	dataBagSecret    *string
 	bufferCharsLeft  *string
@@ -34,6 +35,8 @@ func flagInit() flagsModel {
 	model.tokensPath = flag.String("tokens", "", "Path to the JSON key-value pair set(s) to be used for detokenization of the input file.  For multiple files, separate file paths with a comma (,).  If the same key exists in one or more of the files, then the file furthest to the right takes precendece (overrides) the previous.")
 	model.dataBag = flag.String("databag", "", "Name of the Chef data bag containing the tokenized values.  Under the hood, this relies on your environment having a properly configured knife.rb and necessary certs in place to connect to the Chef server.  Alternately, use --tokens to specify a json file.")
 	model.dataBagSecret = flag.String("databag-secret", "", "Path to the data bag secret.  Only necessary if you use encrypted data bags.")
+
+	model.unsafe = flag.Bool("unsafe", false, "If true, will not throw error if all tokens are not replaced.  Default is false, and if a token still exists after detokenization, an error will be thrown.")
 
 	flag.Parse()
 	if *model.inputPath == "" {
