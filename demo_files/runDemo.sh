@@ -9,3 +9,5 @@ go get -u github.com/vacoj/fasturtle
 # extract test/demo
 ../fasturtle --extract --buffer="__" --input=tokenizedDemo.xml --output=myoutput_multitokenjson.json
 ../fasturtle --extract --buffer-left="{{" --buffer-right="}}" --input=tokenizedDemo.LR-buffer.xml --output=myoutput_multitokenjson.LR.json
+
+../fasturtle --buffer="__" --input=tokenizedDemo.xml --output=myoutput_multitokenjson_missing.xml --tokens=tokensDemo_missing.json
