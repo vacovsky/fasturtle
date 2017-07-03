@@ -82,8 +82,14 @@ func main() {
 			bufferBuilder := buffer[0] + "(.*?)" + buffer[1]
 			rex := regexp.MustCompile(bufferBuilder)
 
-			if len(rex.FindAll(output, -1)) > 0 {
-				fmt.Println("Safety Error: Not all tokens were replaced.  If you're okay with this, pass the --unsafe flag when calling fasturtle.")
+			failVals := rex.FindAll(output, -1)
+			if len(failVals) > 0 {
+				fmt.Println("Safety Error: Not all tokens were replaced:\n")
+				for _, tk := range failVals {
+					fmt.Println(string(tk))
+				}
+				fmt.Println()
+				fmt.Println("If you're okay with this, pass the --unsafe flag when calling fasturtle.")
 				os.Exit(1)
 			}
 		}
