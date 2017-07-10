@@ -40,16 +40,16 @@ func flagInit() flagsModel {
 
 	flag.Parse()
 	if *model.inputPath == "" {
-		fmt.Println("Error: At least Input (--input) must be provided.  See --help for details.")
+		fmt.Fprintf(os.Stderr, "Error: At least Input (--input) must be provided.  See --help for details.")
 		os.Exit(1)
 	}
 
 	if !*model.extract && (*model.dataBag == "" && *model.tokensPath == "") {
-		fmt.Println(`Error: To detokenize, at least --tokens or --databags must have a value.`)
+		fmt.Fprintf(os.Stderr, `Error: To detokenize, at least --tokens or --databags must have a value.`)
 		os.Exit(1)
 	}
 	if strings.ContainsAny(*model.bufferChars, "$") || strings.ContainsAny(*model.bufferChars, "*") {
-		fmt.Println(`Error: Buffer characters (--buffer) may not contain * nor $.  There are probably 
+		fmt.Fprintf(os.Stderr, `Error: Buffer characters (--buffer) may not contain * nor $.  There are probably 
 		other illegal characters I didn't think of, but if you are getting weird errors, maybe try a 
 		difference buffer character set.`)
 		os.Exit(1)

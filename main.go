@@ -50,7 +50,7 @@ func main() {
 			// parse tokens from data bags
 			blobs := listDataBagEntries(*args.dataBag)
 			if len(blobs) == 0 {
-				fmt.Println("Data bag shows no entries.  Ensure you are able to view a list of data bags with the command: knife show data bags {your_databag_here}")
+				fmt.Fprintf(os.Stderr, "Data bag shows no entries.  Ensure you are able to view a list of data bags with the command: knife show data bags {your_databag_here}")
 				os.Exit(1)
 			}
 			var blobsBytes [][]byte
@@ -84,12 +84,11 @@ func main() {
 
 			failVals := rex.FindAll(output, -1)
 			if len(failVals) > 0 {
-				fmt.Println("Safety Error: Not all tokens were replaced:\n")
+				fmt.Fprintf(os.Stderr, "Safety Error: Not all tokens were replaced:\n")
 				for _, tk := range failVals {
 					fmt.Println(string(tk))
 				}
-				fmt.Println()
-				fmt.Println("If you're okay with this, pass the --unsafe flag when calling fasturtle.")
+				fmt.Fprintf(os.Stderr, "If you're okay with this, pass the --unsafe flag when calling fasturtle.")
 				os.Exit(1)
 			}
 		}
@@ -104,7 +103,7 @@ func main() {
 
 func ensureFileExists(file, use string) {
 	if _, err := os.Stat(file); os.IsNotExist(err) {
-		fmt.Printf("Error: File \"%s\" does not exist. Please provide a valid file path for %s.\n", file, use)
+		fmt.Fprintf(os.Stderr, "Error: File \"%s\" does not exist. Please provide a valid file path for %s.\n", file, use)
 		os.Exit(1)
 	}
 }
