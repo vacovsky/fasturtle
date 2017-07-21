@@ -26,7 +26,7 @@ func flagInit() flagsModel {
 	model.extract = flag.Bool("extract", false, "If true, enters extract mode.  In extract mode, the output file or stdout becomes a list of the tokens found within the input file.")
 
 	model.bufferChars = flag.String("buffer", "", "Characters used to buffer the keys within the input file.  The default value is an empty string.  Example: \"__mykey__\" (not used if --buffer-left or --buffer-right are provided).")
-	model.bufferCharsLeft = flag.String("buffer-left", "", "Characters used to buffer the keys within the input file on the left side of a token key.  The default value is an empty string.  Example: \"{{mykey\" (usually used in conjunction with --buffer-left).")
+	model.bufferCharsLeft = flag.String("buffer-left", "", "Characters used to buffer the keys within the input file on the left side of a token key.  The default value is an empty string.  Example: \"{{mykey\" (usually used in conjunction with --buffer-right).")
 	model.bufferCharsRight = flag.String("buffer-right", "", "Characters used to buffer the keys within the input file on the right side of a token key.  The default value is an empty string.  Example: \"mykey}}\" (usually used in conjunction with --buffer-left).")
 
 	model.inputPath = flag.String("input", "", "Path the tokenized input file.")
@@ -53,6 +53,9 @@ func flagInit() flagsModel {
 		other illegal characters I didn't think of, but if you are getting weird errors, maybe try a 
 		difference buffer character set.`)
 		os.Exit(1)
+	}
+	if *model.bufferChars == "" || (*model.bufferCharsLeft == "" && *model.bufferCharsRight == "") {
+		fmt.Println("Did you forget to set the buffer characters?")
 	}
 	return model
 }

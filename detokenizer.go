@@ -43,6 +43,11 @@ func detokenize(input []byte, tokenMap []map[string][]byte) []byte {
 	}
 	for k, v := range overrideCompiled {
 		input = bytes.Replace(input, []byte(k), v, -1)
+        input = bytes.Replace(input, []byte("\\u003c"), []byte("<"), -1)
+        input = bytes.Replace(input, []byte("\\u003e"), []byte(">"), -1)
+        input = bytes.Replace(input, []byte("\\u0026"), []byte("&"), -1)
+
+    }
 	}
 	return input
 }
