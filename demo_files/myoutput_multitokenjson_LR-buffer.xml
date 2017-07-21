@@ -1,5 +1,5 @@
 <someXML name="something" value="some important value">
-<someXML name="secondfilekey" value="second file, so crazy!">
+<someXML name="secondfilekey" value="second file&&&, so crazy!">
 <someXML name="theotherthing" value="this other thing">
 <someXML name="thisshouldbeanint" value=15>
 <someXML name="pirri" value="http://pirri.vacovsky.us">
