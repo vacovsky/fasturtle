@@ -5,6 +5,7 @@
 <someXML name="pirri" value="http://pirri.vacovsky.us">
 <whatever>
     <assemblies>
-    bloop
-    </assemblies>
+    <add assembly="System.Web.Mvc, Version=5.0, Culture=neutral, PublicKeyToken=bloops" />
+    <add    assembly="System.Design, Version=4.t54362.0.0, Culture=neutral, PublicKeyToken=blep"/>
+</assemblies>
 </whatever>

@@ -11,3 +11,5 @@ go get -u github.com/vacoj/fasturtle
 ../fasturtle --extract --buffer-left="{{" --buffer-right="}}" --input=tokenizedDemo.LR-buffer.xml --output=myoutput_multitokenjson.LR.json
 
 ../fasturtle --buffer="__" --input=tokenizedDemo.xml --output=myoutput_multitokenjson_missing.xml --tokens=tokensDemo_missing.json
+
+../fasturtle --buffer="__" --input=tokenizedDemo.xml --assembly-bindings-source=tokenizedDemoAssemblies.xml --output=myoutput_multitokenjson_assemblies.xml --tokens=tokensDemo.json,tokensDemo2.json
