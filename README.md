@@ -19,6 +19,7 @@ go get -u github.com/vacoj/shinroller   # recommended
 Usage of fasturtle:
   -assembly-bindings-source string
         The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.
+        
   -buffer string
         Characters used to buffer the keys within the input file.  The default value is an empty string.  Example: "__mykey__" (not used if --buffer-left or --buffer-right are provided).
 
