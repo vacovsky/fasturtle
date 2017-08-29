@@ -17,9 +17,7 @@ func mapKeyPairs(input [][]byte, buffer []string) []map[string][]byte {
 
 		err := json.Unmarshal(pv, &tokenMap)
 		if err != nil {
-			// TODO: find a better solution for this block.
-			// spew.Dump(pv, tokenMap)
-			// checkError(err)
+			fmt.Println("Failed to parse one of the JSON token files.")
 		}
 
 		tempMap := map[string][]byte{}

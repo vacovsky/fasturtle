@@ -1,10 +1,9 @@
 <someXML name="something" value=__mykey__>
 <someXML name="secondfilekey" value=__secondfilekey__>
+<assemblies>
+    <add assembly="System.Web.Mvc, Version=5.0, Culture=neutral, PublicKeyToken=bloops" />
+    <add    assembly="System.Design, Version=4.t54362.0.0, Culture=neutral, PublicKeyToken=blep"/>
+</assemblies>
 <someXML name="theotherthing" value=__myotherkey__>
 <someXML name="thisshouldbeanint" value=__myintkey__>
 <someXML name="pirri" value=__pirri__>
-<whatever>
-    <assemblies>
-    bloop
-    </assemblies>
-</whatever>

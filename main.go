@@ -94,6 +94,10 @@ func main() {
 		}
 	}
 
+	if *args.assemblyBindingsSource != "" {
+		output = fixAssemblyBindings(output, *args.assemblyBindingsSource)
+	}
+
 	if *args.outputPath != "" {
 		outputToFile(*args.outputPath, output)
 	} else {

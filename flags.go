@@ -8,16 +8,17 @@ import (
 )
 
 type flagsModel struct {
-	bufferChars      *string
-	inputPath        *string
-	outputPath       *string
-	tokensPath       *string
-	extract          *bool
-	unsafe           *bool
-	dataBag          *string
-	dataBagSecret    *string
-	bufferCharsLeft  *string
-	bufferCharsRight *string
+	bufferChars            *string
+	inputPath              *string
+	outputPath             *string
+	tokensPath             *string
+	extract                *bool
+	unsafe                 *bool
+	dataBag                *string
+	dataBagSecret          *string
+	bufferCharsLeft        *string
+	bufferCharsRight       *string
+	assemblyBindingsSource *string
 }
 
 func flagInit() flagsModel {
@@ -37,6 +38,7 @@ func flagInit() flagsModel {
 	model.dataBagSecret = flag.String("databag-secret", "", "Path to the data bag secret.  Only necessary if you use encrypted data bags.")
 
 	model.unsafe = flag.Bool("unsafe", false, "If true, will not throw error if all tokens are not replaced.  Default is false, and if a token still exists after detokenization, an error will be thrown.")
+	model.assemblyBindingsSource = flag.String("assembly-bindings-source", "", "The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.")
 
 	flag.Parse()
 	if *model.inputPath == "" {
@@ -54,7 +56,7 @@ func flagInit() flagsModel {
 		difference buffer character set.`)
 		os.Exit(1)
 	}
-	if *model.bufferChars == "" || (*model.bufferCharsLeft == "" && *model.bufferCharsRight == "") {
+	if *model.bufferChars == "" && (*model.bufferCharsLeft == "" && *model.bufferCharsRight == "") {
 		fmt.Println("Did you forget to set the buffer characters?")
 	}
 	return model

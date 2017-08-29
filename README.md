@@ -17,7 +17,8 @@ go get -u github.com/vacoj/shinroller   # recommended
 
 ```text
 Usage of fasturtle:
-
+  -assembly-bindings-source string
+        The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.
   -buffer string
         Characters used to buffer the keys within the input file.  The default value is an empty string.  Example: "__mykey__" (not used if --buffer-left or --buffer-right are provided).
 
@@ -29,7 +30,7 @@ Usage of fasturtle:
 
   -databag string
         Name of the Chef data bag containing the tokenized values.  Under the hood, this relies on your environment having a properly configured knife.rb and necessary certs in place to connect to the Chef server.  Alternately, use --tokens to specify a json file.
-        
+
   -databag-secret string
         Path to the data bag secret.  Only necessary if you use encrypted data bags.
 
@@ -59,6 +60,12 @@ Note:  this method supports a form of value overrides.  Values duplicated in JSO
 
 ```bash
 fasturtle --input="input.xml" --output="output.xml" --tokens="token.json,token2.json" --buffer="__"
+```
+
+#### Using an assembly binding source config file
+
+```bash
+fasturtle --input="tokenizedDemo.xml" --tokens="tokensDemo.json" --buffer="__" --assembly-bindings-source="tokenizedDemoAssemblies.xml" --unsafe
 ```
 
 #### Using *Unencrypted* Chef Data Bags
