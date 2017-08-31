@@ -3,7 +3,7 @@
 <someXML name="theotherthing" value="this other thing">
 <someXML name="thisshouldbeanint" value=15>
 <someXML name="pirri" value="http://pirri.vacovsky.us">
-<someXML name="escaped" value="\escaped\">
+<someXML name="escaped" value="\\escaped\">
 
 <whatever>
     <assemblies>
