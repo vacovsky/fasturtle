@@ -3,6 +3,8 @@
 <someXML name="theotherthing" value=__myotherkey__>
 <someXML name="thisshouldbeanint" value=__myintkey__>
 <someXML name="pirri" value=__pirri__>
+<someXML name="escaped" value=__escaped__>
+
 <whatever>
     <assemblies>
     bloop

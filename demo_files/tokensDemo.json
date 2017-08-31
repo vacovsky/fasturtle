@@ -2,5 +2,6 @@
     "mykey": "some important value",
     "myotherkey": "this other thing",
     "myintkey": 444,
-    "pirri": "http://pirri.vacovsky.us"
+    "pirri": "http://pirri.vacovsky.us",
+    "escaped": "\\\\escaped\\"
 }
