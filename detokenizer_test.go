@@ -58,7 +58,7 @@ func Test_detokenize(t *testing.T) {
 		// TODO: Add test cases.
 		{name: "file",
 			args: args{
-				input: []byte("\\\\File\\Share"),
+				input: []byte(`\\\\File\\Share`),
 				tokenMap: []map[string][]byte{
 					map[string][]byte{},
 				},
