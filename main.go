@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+var VERSION = "1.3.6"
+
 func main() {
 	// Parse the command line flag values into variables for later use
 	args := flagInit()
