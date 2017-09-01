@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var VERSION = "1.3.6"
+var version = "1.3.7"
 
 func main() {
 	// Parse the command line flag values into variables for later use
@@ -65,7 +65,7 @@ func main() {
 			}
 			var tokens []map[string][]byte
 			tokens = mapKeyPairs(blobsBytes, buffer)
-			output = detokenize(input, tokens)
+			output = detokenize(input, tokens, *args.unquoted)
 
 		} else {
 			paths := strings.Split(*args.tokensPath, ",")
@@ -78,7 +78,7 @@ func main() {
 			tokens := mapKeyPairs(tokenInputs, buffer)
 
 			// store final product for later use
-			output = detokenize(input, tokens)
+			output = detokenize(input, tokens, *args.unquoted)
 		}
 		if !*args.unsafe {
 			bufferBuilder := buffer[0] + "(.*?)" + buffer[1]

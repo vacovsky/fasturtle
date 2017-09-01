@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"strconv"
 
 	"io/ioutil"
 
@@ -32,10 +33,14 @@ func mapKeyPairs(input [][]byte, buffer []string) []map[string][]byte {
 	return tokenMapS
 }
 
-func detokenize(input []byte, tokenMap []map[string][]byte) []byte {
+func detokenize(input []byte, tokenMap []map[string][]byte, unquoted bool) []byte {
 	overrideCompiled := map[string][]byte{}
 	for _, v := range tokenMap {
 		for mk, mv := range v {
+			if unquoted {
+				v, err := strconv.Unquote(string(mv))
+				mv = []byte(v)
+			}
 			overrideCompiled[mk] = mv
 		}
 	}
