@@ -38,7 +38,7 @@ func detokenize(input []byte, tokenMap []map[string][]byte, unquoted bool) []byt
 	for _, v := range tokenMap {
 		for mk, mv := range v {
 			if unquoted {
-				v, err := strconv.Unquote(string(mv))
+				v, _ := strconv.Unquote(string(mv))
 				mv = []byte(v)
 			}
 			overrideCompiled[mk] = mv
