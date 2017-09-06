@@ -30,9 +30,9 @@ func flagInit() flagsModel {
 
 	model.bufferChars = flag.String("buffer", "", "Characters used to buffer the keys within the input file.  The default value is an empty string.  Example: \"__mykey__\" (not used if --buffer-left or --buffer-right are provided).")
 
-	model.bufferCharsLeft = flag.String("buffer-left", "", "Characters used to buffer the keys within the input file on the left side of a token key.  The default value is an empty string.  Example: \"{{mykey\" (usually used in conjunction with --buffer-right).")
+	model.bufferCharsLeft = flag.String("bufferleft", "", "Characters used to buffer the keys within the input file on the left side of a token key.  The default value is an empty string.  Example: \"{{mykey\" (usually used in conjunction with --buffer-right).")
 
-	model.bufferCharsRight = flag.String("buffer-right", "", "Characters used to buffer the keys within the input file on the right side of a token key.  The default value is an empty string.  Example: \"mykey}}\" (usually used in conjunction with --buffer-left).")
+	model.bufferCharsRight = flag.String("bufferright", "", "Characters used to buffer the keys within the input file on the right side of a token key.  The default value is an empty string.  Example: \"mykey}}\" (usually used in conjunction with --buffer-left).")
 
 	model.inputPath = flag.String("input", "", "Path the tokenized input file.")
 
@@ -42,7 +42,7 @@ func flagInit() flagsModel {
 
 	model.dataBag = flag.String("databag", "", "Name of the Chef data bag containing the tokenized values.  Under the hood, this relies on your environment having a properly configured knife.rb and necessary certs in place to connect to the Chef server.  Alternately, use --tokens to specify a json file.")
 
-	model.dataBagSecret = flag.String("databag-secret", "", "Path to the data bag secret.  Only necessary if you use encrypted data bags.")
+	model.dataBagSecret = flag.String("databagsecret", "", "Path to the data bag secret.  Only necessary if you use encrypted data bags.")
 
 	model.unsafe = flag.Bool("unsafe", false, "If true, will not throw error if all tokens are not replaced.  Default is false, and if a token still exists after detokenization, an error will be thrown.")
 
@@ -50,7 +50,7 @@ func flagInit() flagsModel {
 
 	model.version = flag.Bool("version", false, "Prints the version number to stdout.")
 
-	model.assemblyBindingsSource = flag.String("assembly-bindings-source", "", "The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.")
+	model.assemblyBindingsSource = flag.String("assemblybindingssource", "", "The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.")
 
 	flag.Parse()
 

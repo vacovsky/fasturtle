@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-var version = "1.3.9"
+var version = "1.3.10"
 
 func main() {
 	// Parse the command line flag values into variables for later use
