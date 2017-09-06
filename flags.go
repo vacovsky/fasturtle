@@ -52,12 +52,12 @@ func flagInit() flagsModel {
 
 	model.assemblyBindingsSource = flag.String("assembly-bindings-source", "", "The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.")
 
+	flag.Parse()
+
 	if *model.version {
-		fmt.Println(version)
+		fmt.Println("Fasturtle", "v"+version)
 		os.Exit(0)
 	}
-
-	flag.Parse()
 	if *model.inputPath == "" {
 		fmt.Fprintf(os.Stderr, "Error: At least Input (--input) must be provided.  See --help for details.")
 		os.Exit(1)
