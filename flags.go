@@ -20,6 +20,7 @@ type flagsModel struct {
 	bufferCharsRight       *string
 	assemblyBindingsSource *string
 	unquoted               *bool
+	version                *bool
 }
 
 func flagInit() flagsModel {
@@ -47,7 +48,14 @@ func flagInit() flagsModel {
 
 	model.unquoted = flag.Bool("unquoted", false, "If true, will remove loose typing from replaced values.  This allows for the token to be replaced inside of quotes instead of relying on the detokenization to apple quotes.  For example, unquoted=true: <value=\"__this_works__\">,  vs unquoted=false: <value=__this_works__>")
 
+	model.version = flag.Bool("version", false, "Prints the version number to stdout.")
+
 	model.assemblyBindingsSource = flag.String("assembly-bindings-source", "", "The path to a configuration file containing the correct assembly bindings for the project.  This was added to solve for an issue where bindings set in a base config didn't match thoseset in the token config.  Default is an empty string.")
+
+	if *model.version {
+		fmt.Println(version)
+		os.Exit(0)
+	}
 
 	flag.Parse()
 	if *model.inputPath == "" {
